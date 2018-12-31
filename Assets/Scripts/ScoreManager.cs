@@ -39,10 +39,10 @@ public class ScoreManager : Singleton<ScoreManager>
         if (!IsRunning) return;
         
         Hunger += HungerRate * Time.deltaTime;
-        Hunger = Mathf.Min(Hunger, 100);
+        Hunger = Mathf.Clamp(Hunger, 0, 100);
 
         Dirtiness += DirtinessRate * Time.deltaTime;
-        Dirtiness = Mathf.Min(Dirtiness, 100);
+        Dirtiness = Mathf.Clamp(Dirtiness, 0, 100);
 
         if (Hunger == 100 && Dirtiness == 100)
         {

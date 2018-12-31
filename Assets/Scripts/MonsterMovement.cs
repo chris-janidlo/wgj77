@@ -12,7 +12,8 @@ public class MonsterMovement : MonoBehaviour
     public LayerMask GroundLayers;
 
     Rigidbody2D rb;
-    bool jumped;
+    float gravityMem;
+    bool jumped, active = true;
 
     void Start ()
     {
@@ -21,6 +22,8 @@ public class MonsterMovement : MonoBehaviour
 
     void Update ()
     {
+        if (!active) return;
+
         float input = Input.GetAxis("Horizontal");
         if (isGrounded() && !jumped)
         {
@@ -36,6 +39,13 @@ public class MonsterMovement : MonoBehaviour
             jumped = false;
             move(input, AirAccel, AirSpeed);
         }
+    }
+
+    public void SetActive (bool value)
+    {
+        active = value;
+        if (!value) rb.velocity = Vector2.zero;
+        rb.simulated = value;
     }
 
     bool isGrounded ()
