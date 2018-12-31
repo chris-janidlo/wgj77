@@ -48,6 +48,6 @@ MonoBehaviour:
   Dirtiness: 0
   Frustration: 0
   CoinCount: 0
-  HungerRate: 0
-  DirtinessRate: 0
-  FrustrationRate: 0
+  HungerRate: 1
+  DirtinessRate: 0.5
+  FrustrationRate: 2

@@ -17,9 +17,14 @@ public class ScoreManager : Singleton<ScoreManager>
         if (SingletonGetInstance() == null)
         {
             SingletonSetInstance(this, false);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
+            // this allows different scenes to set different rates, by setting different rates on the ScoreManager per scene
+            Instance.HungerRate = HungerRate;
+            Instance.DirtinessRate = DirtinessRate;
+            Instance.FrustrationRate = FrustrationRate;
             Destroy(gameObject);
         }
     }

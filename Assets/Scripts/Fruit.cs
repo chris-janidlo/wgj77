@@ -20,7 +20,7 @@ public class Fruit : MonoBehaviour
     void Update ()
     {
         LifeTimer -= Time.deltaTime;
-        sr.color = Color.Lerp(Palette.Colors[PaletteIdentifier.On], Color.white, LifeTimer / LifeTime);
+        sr.color = Color.Lerp(Color.black, Color.white, LifeTimer / LifeTime);
 
         if (LifeTimer <= 0)
         {
