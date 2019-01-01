@@ -50,7 +50,7 @@ public class ScoreManager : Singleton<ScoreManager>
             IsRunning = false;
         }
 
-        Frustration -= FrustrationRate * Time.deltaTime;
+        Frustration += FrustrationRate * Time.deltaTime;
         Frustration = Mathf.Clamp(Frustration, 0, 100);
     }
 

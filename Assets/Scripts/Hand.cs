@@ -129,9 +129,9 @@ public class Hand : MonoBehaviour
         }
         transform.position = new Vector2(transform.position.x, BathLocation.y);
         
-        while (transform.position.x < BathLocation.x)
+        while (transform.position.x > BathLocation.x)
         {
-            transform.position += Vector3.right * CarrySpeed * Time.deltaTime;
+            transform.position += Vector3.left * CarrySpeed * Time.deltaTime;
             yield return null;
         }
         transform.position = BathLocation;
