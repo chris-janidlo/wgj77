@@ -8,7 +8,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public bool IsRunning;
 
     public float Hunger, Dirtiness, Frustration;
-    public int CoinCount;
+    public float CoinCount;
 
     public float HungerRate, DirtinessRate, FrustrationRate;
 
@@ -59,6 +59,6 @@ public class ScoreManager : Singleton<ScoreManager>
         Hunger = 0;
         Dirtiness = 0;
         Frustration = 0;
-        CoinCount = 0;
+        CoinCount = 37;
     }
 }

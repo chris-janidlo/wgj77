@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc4d771f4e7744e4a5ffac02fb6f26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsRunning: 0
+  IsRunning: 1
   Hunger: 0
   Dirtiness: 0
   Frustration: 0
-  CoinCount: 0
+  CoinCount: 37
   HungerRate: 1
-  DirtinessRate: 0.5
+  DirtinessRate: 2
   FrustrationRate: 2

@@ -5,9 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
 public class Fruit : MonoBehaviour
 {
+    public float HungerScore;
+    public float Price;
     public float LifeTime;
     public float LifeTimer;
-    public float HungerScore;
 
     SpriteRenderer sr;
 

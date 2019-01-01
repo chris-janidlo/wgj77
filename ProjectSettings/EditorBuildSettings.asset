@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Coin.unity
     guid: b3611ba30838f46f793a56d8711f8460
+  - enabled: 1
+    path: Assets/Scenes/Bath.unity
+    guid: a548a86e343704a62a894b096a85bea6
   m_configObjects: {}
