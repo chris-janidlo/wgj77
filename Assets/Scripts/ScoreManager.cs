@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using crass;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
-    public bool IsRunning;
+    public static readonly List<string> DisabledSceneNames = new List<string>() { "Menu", "Victory" };
 
     public float Hunger, Dirtiness, Frustration;
     public float CoinCount;
 
     public float HungerRate, DirtinessRate, FrustrationRate;
+
+    public float LifeTime;
+
+    bool initialized;
 
     void Awake ()
     {
@@ -36,8 +41,19 @@ public class ScoreManager : Singleton<ScoreManager>
 
     void Update ()
     {
-        if (!IsRunning) return;
+        if (DisabledSceneNames.Contains(SceneManager.GetActiveScene().name))
+        {
+            initialized = false;
+            return;
+        }
+
+        if (!initialized)
+        {
+            Initialize();
+        }
         
+        LifeTime += Time.deltaTime;
+
         Hunger += HungerRate * Time.deltaTime;
         Hunger = Mathf.Clamp(Hunger, 0, 100);
 
@@ -46,8 +62,7 @@ public class ScoreManager : Singleton<ScoreManager>
 
         if (Hunger == 100 && Dirtiness == 100)
         {
-            Debug.Log("you win");
-            IsRunning = false;
+            SceneManager.LoadScene("Victory");
         }
 
         Frustration += FrustrationRate * Time.deltaTime;
@@ -56,9 +71,12 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public void Initialize ()
     {
+        initialized = true;
+        
         Hunger = 0;
         Dirtiness = 0;
         Frustration = 0;
         CoinCount = 37;
+        LifeTime = 0;
     }
 }
