@@ -946,16 +946,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468392872f40141a5b03a7d36e8db95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CoinGameThreshold: 23
+  CoinGameThreshold: 6
   CoinGameProbability:
     SecondsPerRoll: 1
-    ChancePerRoll: 0.5
+    ChancePerRoll: 0.3
     Name: 
-  WashGameThreshold: 60
+  WashGameThreshold: 55
   WashGameProbability:
     SecondsPerRoll: 1
-    ChancePerRoll: 0.5
+    ChancePerRoll: 0.3
     Name: 
+  Cooldown: 10
 --- !u!4 &1547917793
 Transform:
   m_ObjectHideFlags: 0
@@ -1176,6 +1177,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636706488518375400, guid: 4ff3a380dbb2349778935550f45f44de,
+        type: 3}
+      propertyPath: HungerRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636706488518375400, guid: 4ff3a380dbb2349778935550f45f44de,
+        type: 3}
+      propertyPath: DirtinessRate
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ff3a380dbb2349778935550f45f44de, type: 3}

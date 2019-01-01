@@ -72,11 +72,11 @@ public class ScoreManager : Singleton<ScoreManager>
     public void Initialize ()
     {
         initialized = true;
-        
+
         Hunger = 0;
         Dirtiness = 0;
         Frustration = 0;
-        CoinCount = 37;
+        CoinCount = 20;
         LifeTime = 0;
     }
 }

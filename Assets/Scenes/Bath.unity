@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScreenTime: 30
-  CleanlinessPerSecond: 5
+  CleanlinessPerSecond: 20
   BathTime: 2
   MoveSpeed: 5
   DirectionSwitchTimeRange: {x: 1, y: 4}

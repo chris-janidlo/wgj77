@@ -13,6 +13,10 @@ public class LivingRoomSwitcher : MonoBehaviour
     [Tooltip("If the dirtiness level is higher than this, there's a chance we play the wash game")]
     public float WashGameThreshold;
     public RepeatedProbability WashGameProbability;
+    [Tooltip("Will never switch within Cooldown seconds of returning to living room")]
+    public float Cooldown;
+
+    float timer;
 
     void Start ()
     {
@@ -21,10 +25,19 @@ public class LivingRoomSwitcher : MonoBehaviour
 
         StartCoroutine(CoinGameProbability.CheckRoutine(startNewGame));
         StartCoroutine(WashGameProbability.CheckRoutine(startNewGame));
+
+        timer = Cooldown;
+    }
+
+    void Update ()
+    {
+        timer -= Time.deltaTime;
     }
 
     void startNewGame (string gameName)
     {
+        if (timer > 0) return;
+        
         switch (gameName)
         {
             case "coin":
