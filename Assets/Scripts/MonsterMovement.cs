@@ -18,11 +18,15 @@ public class MonsterMovement : MonoBehaviour
     IEnumerator jumpEnum;
     bool active = true;
 
+    Animator animator;
+
     void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
         Ground.ToMove = rb;
         Air.ToMove = rb;
+
+        animator = GetComponent<Animator>();
     }
 
     void Update ()
@@ -42,6 +46,8 @@ public class MonsterMovement : MonoBehaviour
         {
             Air.Move(input);
         }
+
+        animator.SetBool("Walking", input != 0);
     }
 
     public void SetActive (bool value)
