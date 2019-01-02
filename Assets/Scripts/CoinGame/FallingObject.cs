@@ -19,13 +19,16 @@ public class FallingObject : MonoBehaviour
         switch (other.tag)
         {
             case "FallingObject":
-                goto case "Player";
             case "Player":
                 break;
 
             case "Basket":
                 ScoreManager.Instance.CoinCount += CoinValue;
                 CoinManager.Instance.BasketCount -= 1;
+                if (CoinValue > 0)
+                {
+                    ScoreManager.Instance.Frustration = 0;
+                }
                 goto default;
             default:
                 Destroy(gameObject);

@@ -34,6 +34,7 @@ public class Fruit : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ScoreManager.Instance.Hunger -= HungerScore;
+            ScoreManager.Instance.Frustration = 0;
             die();
         }
     }

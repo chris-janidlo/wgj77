@@ -5,68 +5,103 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MonsterMovement : MonoBehaviour
 {
-    public float GroundSpeed, GroundAccel, AirSpeed, AirAccel, JumpBurst;
+    public HorizontalMovement Ground, Air;
+    public bool JumpEnabled;
+    public AnimationCurve JumpYVelocity;
 
     public float HalfHeight, GroundedFudge;
 
     public LayerMask GroundLayers;
 
     Rigidbody2D rb;
-    float gravityMem;
-    bool jumped, active = true;
+    float jumpTimer;
+    IEnumerator jumpEnum;
+    bool active = true;
 
     void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
+        Ground.ToMove = rb;
+        Air.ToMove = rb;
     }
 
     void Update ()
     {
         if (!active) return;
 
-        float input = Input.GetAxis("Horizontal");
-        if (isGrounded() && !jumped)
+        float input = Input.GetAxisRaw("Horizontal");
+        if (isGrounded())
         {
-            move(input, GroundAccel, GroundSpeed);
-            if (Input.GetButton("Vertical"))
+            Ground.Move(input);
+            if (JumpEnabled && jumpTimer <= 0 && Input.GetButton("Vertical"))
             {
-                jumped = true;
-                rb.AddForce(Vector3.up * JumpBurst, ForceMode2D.Impulse);
+                StartCoroutine(jumpEnum = jumpRoutine());
             }
         }
         else
         {
-            jumped = false;
-            move(input, AirAccel, AirSpeed);
+            Air.Move(input);
         }
     }
 
     public void SetActive (bool value)
     {
         active = value;
-        if (!value) rb.velocity = Vector2.zero;
+        if (!value)
+        {
+            rb.velocity = Vector2.zero;
+            if (jumpTimer > 0 ) StopCoroutine(jumpEnum);
+        }
         rb.simulated = value;
     }
 
     bool isGrounded ()
     {
-        var hit = Physics2D.CircleCast(transform.position, GroundedFudge, Vector2.down, HalfHeight, GroundLayers);
-        return hit.collider != null;
+        bool result = Physics2D.CircleCast(transform.position, GroundedFudge, Vector2.down, HalfHeight, GroundLayers);
+        return result;
     }
-    
-    void move (float input, float accel, float top)
+
+    IEnumerator jumpRoutine ()
     {
-        if (rb.velocity.magnitude < top)
+        var keys = JumpYVelocity.keys;
+        float maxTime = keys[keys.Length - 1].time;
+
+        jumpTimer = maxTime;
+        while (jumpTimer > 0)
         {
-            Vector2 vel;
+            rb.velocity = new Vector2(rb.velocity.x, JumpYVelocity.Evaluate(maxTime - jumpTimer));
+            jumpTimer -= Time.deltaTime;
+            yield return null;
+        }
+        rb.velocity = new Vector2(rb.velocity.x, keys[keys.Length - 1].value);
+    }
+
+    [System.Serializable]
+    public class HorizontalMovement
+    {
+        public Rigidbody2D ToMove { get; set; }
+
+        public float TopSpeed, Acceleration;
+
+        float decelSign;
+
+        public void Move (float input)
+        {
+            float speed = ToMove.velocity.x;
+
             if (input == 0)
             {
-                vel = Vector2.left * rb.velocity.normalized * 0.5f;
+                speed -= Time.deltaTime * Acceleration * decelSign;
+                if (speed * decelSign <= 0) speed = 0;
             }
-            else {
-                vel = Vector2.right * input;
+            else
+            {
+                speed += Time.deltaTime * Acceleration * Mathf.Sign(input);
+                speed = Mathf.Clamp(speed, -TopSpeed, TopSpeed);
+                decelSign = Mathf.Sign(speed);
             }
-            rb.velocity += vel * accel * Time.deltaTime;
+
+            ToMove.velocity = new Vector2(speed, ToMove.velocity.y);
         }
     }
 }

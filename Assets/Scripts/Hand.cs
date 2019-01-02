@@ -145,6 +145,7 @@ public class Hand : MonoBehaviour
             transform.position = BathLocation + Vector2.up * offset;
 
             ScoreManager.Instance.Dirtiness -= CleanlinessPerSecond * Time.deltaTime;
+            ScoreManager.Instance.Frustration = 0;
             
             yield return null;
         }

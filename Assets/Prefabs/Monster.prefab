@@ -46,11 +46,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d4101776d474b58a5aefb4f300d70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroundSpeed: 5
-  GroundAccel: 100
-  AirSpeed: 5
-  AirAccel: 10
-  JumpBurst: 8.3
+  Ground:
+    TopSpeed: 8
+    Acceleration: 20
+  Air:
+    TopSpeed: 8
+    Acceleration: 12
+  Gravity: 10
+  JumpYVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 354.10788
+      outSlope: 354.10788
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.031053161
+    - serializedVersion: 3
+      time: 0.05
+      value: 7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   HalfHeight: 0.8
   GroundedFudge: 0.1
   GroundLayers:
@@ -117,7 +143,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
