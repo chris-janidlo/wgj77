@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using crass;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using crass;
 
 public class Hand : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Hand : MonoBehaviour
     public Transform BathTarget;
     public float CarrySpeed, PlayerCarryYOffset, BathWashMagnitude, BathWashScale;
     public MonsterMovement PlayerRef;
+    public Text TimerDisplay;
 
     bool moving, carrying;
     Vector2 moveDir;
@@ -36,6 +38,7 @@ public class Hand : MonoBehaviour
     void Update ()
     {
         screenTimer -= Time.deltaTime;
+        TimerDisplay.text = Mathf.CeilToInt(screenTimer).ToString();
         if (screenTimer <= 0)
         {
             SceneManager.LoadScene("LivingRoom");

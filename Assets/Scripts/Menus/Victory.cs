@@ -10,7 +10,7 @@ public class Victory : MonoBehaviour
     public string[] FrustrationMessages;
     public Text VictoryText;
 
-    bool falseForCongratsTrueForInfo;
+    bool falseForCongratsTrueForInfo, keyHasBeenReleased;
 
     void Start ()
     {
@@ -19,7 +19,9 @@ public class Victory : MonoBehaviour
 
     void Update ()
     {
-        if (Input.anyKeyDown)
+        if (!Input.anyKey) keyHasBeenReleased = true;
+        
+        if (keyHasBeenReleased && Input.anyKeyDown)
         {
             if (!falseForCongratsTrueForInfo)
             {

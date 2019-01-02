@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using crass;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using crass;
 
 public class CoinManager : Singleton<CoinManager>
 {
@@ -12,6 +13,8 @@ public class CoinManager : Singleton<CoinManager>
     public float SpawnTime;
     public float SpawnHeight;
     public Vector2 SpawnXBounds;
+
+    public Text BasketDisplay;
 
     public int BasketCount
     {
@@ -54,6 +57,8 @@ public class CoinManager : Singleton<CoinManager>
             float x = Random.Range(SpawnXBounds.x, SpawnXBounds.y);
             Instantiate(SpawnPool.GetNext(), new Vector2(x, SpawnHeight), Quaternion.identity);
         }
+
+        BasketDisplay.text = BasketCount.ToString();
     }
 }
 
