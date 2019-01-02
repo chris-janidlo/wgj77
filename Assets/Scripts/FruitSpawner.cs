@@ -10,8 +10,9 @@ public class FruitSpawner : MonoBehaviour
     public List<Bounds> ForbiddenBounds;
     public float MinDistFromPlayer, MaxDistFromPlayer;
     public Vector2 SpawnTimeRange;
+    public FruitBullseye BullseyePrefab;
     public FruitBag FruitPrefabs;
-    public float MinCoins;
+    public float MinCoins, BrokeFrustration;
     public MonsterMovement PlayerRef;
 
     float timer;
@@ -24,10 +25,17 @@ public class FruitSpawner : MonoBehaviour
     void Update ()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0 && ScoreManager.Instance.CoinCount >= MinCoins)
+        if (timer <= 0)
         {
-            timer = Random.Range(SpawnTimeRange.x, SpawnTimeRange.y);
-            StartCoroutine(spawnFruit());
+            if (ScoreManager.Instance.CoinCount >= MinCoins)
+            {
+                timer = Random.Range(SpawnTimeRange.x, SpawnTimeRange.y);
+                StartCoroutine(spawnFruit());
+            }
+            else
+            {
+                ScoreManager.Instance.Frustration += BrokeFrustration;
+            }
         }
     }
 
@@ -51,9 +59,9 @@ public class FruitSpawner : MonoBehaviour
         );
         yield return null; // TODO: not sure if we need a *guaranteed* yield return for Unity to do coroutines, or if *any* yield return works
 
-        float zAngle = Random.Range(0, 360);
         var fruit = FruitPrefabs.GetNext();
-        Instantiate(fruit, spawnPos, Quaternion.Euler(0, 0, zAngle));
+        var bullseye = Instantiate(BullseyePrefab, spawnPos, Quaternion.identity);
+        bullseye.ToSpawn = fruit;
 
         ScoreManager.Instance.CoinCount -= fruit.Price;
     }

@@ -80,7 +80,6 @@ public class Hand : MonoBehaviour
         {
             if (Mathf.Abs(transform.position.x - PlayerRef.transform.position.x) <= AttackDistance && RandomExtra.ChancePerSecond(AttackChancePerSecond))
             {
-                Debug.Log("Attacking");
                 moving = false;
                 yield break; // do a grab, as long as the parent immediately calls grab
             }

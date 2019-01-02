@@ -1012,7 +1012,9 @@ MonoBehaviour:
     UpperRight: {x: -1.7, y: 3}
   MinDistFromPlayer: 2
   MaxDistFromPlayer: 4
-  SpawnTimeRange: {x: 0.5, y: 1.25}
+  SpawnTimeRange: {x: 0.75, y: 1.25}
+  BullseyePrefab: {fileID: 9019989235212010341, guid: 7faf00e6764174a0f85922c9e910e4e2,
+    type: 3}
   FruitPrefabs:
     Items:
     - {fileID: 3578183569553486667, guid: dde7594e0f98940dda070ca00f9bf9ab, type: 3}
@@ -1027,6 +1029,7 @@ MonoBehaviour:
     - {fileID: 1372835558998049756, guid: cdd3cc0ae8c6141b1be0670815d9b761, type: 3}
     AvoidRepeats: 0
   MinCoins: 5
+  BrokeFrustration: 7
   PlayerRef: {fileID: 1410407285}
 --- !u!4 &2040996832
 Transform:
