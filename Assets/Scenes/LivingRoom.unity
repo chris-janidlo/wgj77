@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnBounds:
     LowerLeft: {x: -8.5, y: -3}
-    UpperRight: {x: 8.5, y: 3}
+    UpperRight: {x: 8.5, y: 6}
   ForbiddenBounds:
   - LowerLeft: {x: 1.7, y: 1.6}
     UpperRight: {x: 7.7, y: 3}
@@ -1010,9 +1010,9 @@ MonoBehaviour:
     UpperRight: {x: 3, y: -0.75}
   - LowerLeft: {x: -7.7, y: 1.6}
     UpperRight: {x: -1.7, y: 3}
-  MinDistFromPlayer: 4
-  MaxDistFromPlayer: 8
-  SpawnTimeRange: {x: 1, y: 2.5}
+  MinDistFromPlayer: 2
+  MaxDistFromPlayer: 4
+  SpawnTimeRange: {x: 0.5, y: 1.25}
   FruitPrefabs:
     Items:
     - {fileID: 3578183569553486667, guid: dde7594e0f98940dda070ca00f9bf9ab, type: 3}

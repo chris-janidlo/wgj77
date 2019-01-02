@@ -45,6 +45,7 @@ public class FruitSpawner : MonoBehaviour
         while
         (
             ForbiddenBounds.Any(b => b.PointInside(spawnPos)) ||
+            spawnPos.y < PlayerRef.transform.position.y ||
             spawnDist < MinDistFromPlayer ||
             spawnDist > MaxDistFromPlayer
         );

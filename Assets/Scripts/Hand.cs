@@ -12,7 +12,8 @@ public class Hand : MonoBehaviour
     public float MoveSpeed;
     public Vector2 DirectionSwitchTimeRange;
     public Vector2 MoveTimeRange;
-    public float GrabDelay, FallSpeed, FloorDelay, RiseSpeed;
+    public float AttackDistance, AttackChancePerSecond;
+    public float GrabDelay, FallSpeed, FloorDelay, RiseSpeed, Cooldown;
     public float FloatHeight, FloorHeight;
     public Transform BathTarget;
     public float CarrySpeed, PlayerCarryYOffset, BathWashMagnitude, BathWashScale;
@@ -77,6 +78,13 @@ public class Hand : MonoBehaviour
 
         while (mainTimer > 0)
         {
+            if (Mathf.Abs(transform.position.x - PlayerRef.transform.position.x) <= AttackDistance && RandomExtra.ChancePerSecond(AttackChancePerSecond))
+            {
+                Debug.Log("Attacking");
+                moving = false;
+                yield break; // do a grab, as long as the parent immediately calls grab
+            }
+
             mainTimer -= Time.deltaTime;
             directionTimer -= Time.deltaTime;
 
@@ -96,6 +104,8 @@ public class Hand : MonoBehaviour
 
     IEnumerator grabRoutine ()
     {
+        rb.velocity = Vector2.zero;
+
         yield return new WaitForSeconds(GrabDelay);
         while (transform.position.y > FloorHeight)
         {
@@ -164,7 +174,7 @@ public class Hand : MonoBehaviour
         PlayerRef.SetActive(true);
         PlayerRef.transform.parent = null;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(Cooldown);
 
         rb.simulated = true;
         carrying = false;

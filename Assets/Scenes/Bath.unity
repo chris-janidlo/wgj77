@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 267865343}
   - component: {fileID: 267865345}
   - component: {fileID: 267865344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,15 +944,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScreenTime: 30
-  CleanlinessPerSecond: 20
+  CleanlinessPerSecond: 15
   BathTime: 2
-  MoveSpeed: 5
+  MoveSpeed: 7
   DirectionSwitchTimeRange: {x: 1, y: 4}
   MoveTimeRange: {x: 3, y: 6}
-  GrabDelay: 0.5
+  AttackDistance: 2
+  AttackChancePerSecond: 0.8
+  GrabDelay: 0.32
   FallSpeed: 24
-  FloorDelay: 2
-  RiseSpeed: 4
+  FloorDelay: 1
+  RiseSpeed: 5
+  Cooldown: 1
   FloatHeight: 1.69
   FloorHeight: -3
   BathTarget: {fileID: 927485497}
@@ -1187,6 +1190,16 @@ PrefabInstance:
       propertyPath: JumpBurst
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3393458144422733170, guid: 59d10df9ccb1249919b8c685e6a4b103,
+        type: 3}
+      propertyPath: Ground.Acceleration
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393458144422733170, guid: 59d10df9ccb1249919b8c685e6a4b103,
+        type: 3}
+      propertyPath: Ground.TopSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59d10df9ccb1249919b8c685e6a4b103, type: 3}
 --- !u!114 &1949951992 stripped
@@ -1410,12 +1423,12 @@ PrefabInstance:
     - target: {fileID: 4461128842363110246, guid: 771b4d987e6aa4eabbbf202ed3dd9bbe,
         type: 3}
       propertyPath: MinOnScreenTime
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4461128842363110246, guid: 771b4d987e6aa4eabbbf202ed3dd9bbe,
         type: 3}
       propertyPath: MaxOnScreenTime
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4461128842033092694, guid: 771b4d987e6aa4eabbbf202ed3dd9bbe,
         type: 3}

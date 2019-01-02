@@ -748,9 +748,13 @@ MonoBehaviour:
     - {fileID: 3121174445866018378, guid: 70bdeee8a2df442d58836e4ae1e3ce11, type: 3}
     - {fileID: 3121174445866018378, guid: 172c84e61338041b98bb1ecaee16770b, type: 3}
     - {fileID: 3121174445866018378, guid: 8c35cecf78e594f1d8f9e5f2a2cb8b7a, type: 3}
+    - {fileID: 2478102221243403809, guid: 03d671f0d889d4165b9233fe44be445a, type: 3}
+    - {fileID: 2478102221243403809, guid: 03d671f0d889d4165b9233fe44be445a, type: 3}
+    - {fileID: 7729184269063568130, guid: a786c7fcd11d2423b88e410a94459aca, type: 3}
+    - {fileID: 7729184269063568130, guid: a786c7fcd11d2423b88e410a94459aca, type: 3}
     AvoidRepeats: 0
-  SpawnTime: 0.6
-  SpawnHeight: 20
+  SpawnTime: 0.13
+  SpawnHeight: 7
   SpawnXBounds: {x: -7, y: 7}
   BasketDisplay: {fileID: 1535238895}
   _basketCount: 0

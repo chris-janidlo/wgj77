@@ -70,12 +70,12 @@ PrefabInstance:
     - target: {fileID: 39410758113923116, guid: 13325f8e0f85546199832ca56c83a8c3,
         type: 3}
       propertyPath: HungerScore
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 39410758113923116, guid: 13325f8e0f85546199832ca56c83a8c3,
         type: 3}
       propertyPath: Price
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 283938429936421736, guid: 13325f8e0f85546199832ca56c83a8c3,
         type: 3}
