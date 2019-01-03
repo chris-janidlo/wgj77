@@ -37,7 +37,8 @@ public class PauseButton : MonoBehaviour
         switch (Type)
         {
             case PauseButtonType.Restart:
-                SceneManager.LoadScene("Menu");
+                ScoreManager.Instance.Initialize();
+                SceneManager.LoadScene("LivingRoom");
                 break;
 
             case PauseButtonType.Resume:
